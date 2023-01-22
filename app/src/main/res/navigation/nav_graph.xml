@@ -1,0 +1,35 @@
+<?xml version="1.0" encoding="utf-8"?>
+<navigation xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/nav_graph"
+    app:startDestination="@id/search_graph">
+
+    <navigation
+        android:id="@+id/search_graph"
+        app:startDestination="@id/search_fragment">
+
+        <action
+            android:id="@+id/action_navigate_to_flights_list_fragment"
+            app:destination="@id/flights_list_graph" />
+
+        <fragment
+            android:id="@+id/search_fragment"
+            android:name="com.example.qlabtest.presentation.pages.fragments.search_fragment.SearchFragment"
+            tools:layout="@layout/fragment_search" />
+    </navigation>
+
+    <navigation
+        android:id="@+id/flights_list_graph"
+        app:startDestination="@id/flights_list_fragment">
+
+        <argument
+            android:name="flightsModelData"
+            app:argType="com.example.qlabtest.data.models.FlightsModel" />
+
+        <fragment
+            android:id="@+id/flights_list_fragment"
+            android:name="com.example.qlabtest.presentation.pages.fragments.flights_list_fragment.FlightsListFragment"
+            tools:layout="@layout/fragment_flights_list" />
+    </navigation>
+</navigation>

@@ -1,0 +1,107 @@
+<?xml version="1.0" encoding="utf-8"?>
+<layout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools">
+
+    <data>
+
+        <variable
+            name="searchViewModel"
+            type="com.example.qlabtest.presentation.pages.fragments.search_fragment.SearchViewModel" />
+    </data>
+
+    <androidx.constraintlayout.widget.ConstraintLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:padding="20dp">
+
+        <TextView
+            android:id="@+id/tv_title"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="@string/search_for_a_flight"
+            android:textColor="@color/black"
+            android:textSize="30sp"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent" />
+
+        <EditText
+            android:id="@+id/et_departures"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="50dp"
+            android:hint="@string/departures"
+            android:onTextChanged="@{searchViewModel.departuresOnTextChanged}"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintHorizontal_bias="0.0"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/tv_title" />
+
+        <EditText
+            android:id="@+id/et_target"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="10dp"
+            android:hint="@string/target"
+            android:onTextChanged="@{searchViewModel.targetOnTextChanged}"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintHorizontal_bias="0.0"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/et_departures" />
+
+        <EditText
+            android:id="@+id/et_start_date"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="10dp"
+            android:focusable="false"
+            android:hint="@string/start_date"
+            android:inputType="none"
+            android:onClick="@{searchViewModel.openDatePickerStartDate}"
+            android:text="@{searchViewModel.startDateText}"
+            app:layout_constraintEnd_toEndOf="@+id/et_target"
+            app:layout_constraintHorizontal_bias="0.0"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/et_target"
+            tools:ignore="TextFields" />
+
+        <EditText
+            android:id="@+id/et_end_date"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="10dp"
+            android:focusable="false"
+            android:hint="@string/end_date"
+            android:inputType="none"
+            android:onClick="@{searchViewModel.openDatePickerEndDate}"
+            android:text="@{searchViewModel.endDateText}"
+            app:layout_constraintEnd_toEndOf="@+id/et_start_date"
+            app:layout_constraintHorizontal_bias="0.0"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/et_start_date"
+            tools:ignore="TextFields" />
+
+        <androidx.appcompat.widget.SwitchCompat
+            android:id="@+id/switch_is_direct_flight"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:onCheckedChanged="@{searchViewModel.isDirectFlightOnChanged}"
+            android:text="@string/is_direct_flight"
+            app:layout_constraintEnd_toEndOf="@+id/et_end_date"
+            app:layout_constraintHorizontal_bias="0.0"
+            app:layout_constraintStart_toStartOf="@+id/et_end_date"
+            app:layout_constraintTop_toBottomOf="@+id/et_end_date" />
+
+        <Button
+            android:id="@+id/btn_search"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="50dp"
+            android:onClick="@{searchViewModel.btnSearchClick}"
+            android:text="@string/search"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/switch_is_direct_flight" />
+    </androidx.constraintlayout.widget.ConstraintLayout>
+</layout>
