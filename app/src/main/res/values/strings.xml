@@ -1,10 +1,20 @@
 <resources>
     <string name="app_name">QLabTest</string>
     <string name="search_for_a_flight">Search for a flight!</string>
-    <string name="departures">Departures</string>
-    <string name="target">Target</string>
-    <string name="start_date">Start date</string>
-    <string name="end_date">End date</string>
+    <string name="departures">Departures…</string>
+    <string name="target">Target…</string>
+    <string name="start_date">Start date…</string>
+    <string name="end_date">End date…</string>
     <string name="is_direct_flight">Is direct flight?</string>
     <string name="search">Search</string>
+    <string name="price">Price:</string>
+    <string name="departures_from">Departures From:</string>
+    <string name="arrival_to">Arrival To:</string>
+    <string name="departures_time">Departures Time:</string>
+    <string name="arrival_time">Arrival Time:</string>
+    <string name="departures_date">Departures Date:</string>
+    <string name="arrival_date">Arrival Date:</string>
+    <string name="is_direct">Is Direct?</string>
+    <string name="available_flights">Available Flights</string>
+    <string name="loading_your_data">Loading your data…</string>
 </resources>

@@ -1,10 +1,10 @@
 package com.example.qlabtest.presentation.pages.fragments.flights_list_fragment
 
 import android.annotation.SuppressLint
-import android.util.Log
 import androidx.lifecycle.ViewModel
 import com.example.qlabtest.core.MyApplication
 import com.example.qlabtest.data.models.FlightsModel
+import com.example.qlabtest.presentation.adapters.FlightsListAdapter
 import com.google.gson.Gson
 import com.google.gson.reflect.TypeToken
 import java.text.SimpleDateFormat
@@ -13,8 +13,9 @@ import java.time.LocalDate
 class FlightsListViewModel : ViewModel() {
 
     var flightsModelSearchParams: FlightsModel? = null
+    val flightsListAdapter = FlightsListAdapter()
     private var flightsModelList = arrayListOf<FlightsModel>()
-    val flightsModelListFiltered = arrayListOf<FlightsModel>()
+    private val flightsModelListFiltered = arrayListOf<FlightsModel>()
 
     fun importFlightsJSON() {
         val jsonString: String =
@@ -81,7 +82,7 @@ class FlightsListViewModel : ViewModel() {
 
         return (flightsModelSearchParams?.arrivalDate!!.isEmpty() ||
                 checkEndDate.isBefore(endDate) ||
-                checkEndDate.equals(endDate))
+                checkEndDate == endDate)
     }
 
     private fun isDirectFilterCondition(flightModel: FlightsModel): Boolean {
@@ -96,6 +97,10 @@ class FlightsListViewModel : ViewModel() {
         val inputDate = inputFormat.parse(dateStr) ?: ""
 
         return outputFormat.format(inputDate)
+    }
+
+    fun setDataToRecyclerView() {
+        flightsListAdapter.setData(flightsModelListFiltered)
     }
 
 }

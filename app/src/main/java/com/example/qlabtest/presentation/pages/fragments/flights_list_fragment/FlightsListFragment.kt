@@ -10,6 +10,10 @@ import com.example.qlabtest.FlightsListGraphArgs
 import com.example.qlabtest.R
 import com.example.qlabtest.databinding.FragmentFlightsListBinding
 import com.example.qlabtest.presentation.pages.fragments.BaseFragment
+import kotlinx.coroutines.CoroutineScope
+import kotlinx.coroutines.Dispatchers
+import kotlinx.coroutines.launch
+import kotlinx.coroutines.withContext
 
 class FlightsListFragment : BaseFragment() {
 
@@ -23,9 +27,18 @@ class FlightsListFragment : BaseFragment() {
     ): View {
         initViewModel()
         setContactDataToParam()
-        flightsListViewModel.importFlightsJSON()
-        flightsListViewModel.filteringList()
         initDataBinding(inflater, container)
+
+        CoroutineScope(Dispatchers.IO).launch {
+            flightsListViewModel.importFlightsJSON()
+            flightsListViewModel.filteringList()
+
+            withContext(Dispatchers.Main) {
+                binding.rvFlightsList.post {
+                    flightsListViewModel.setDataToRecyclerView()
+                }
+            }
+        }
 
         return binding.root
     }
