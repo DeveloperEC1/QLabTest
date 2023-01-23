@@ -1,4 +1,4 @@
-package com.example.qlabtest.presentation.adapters.viewholders
+package com.example.qlabtest.presentation.adapters.view_holders
 
 import androidx.recyclerview.widget.RecyclerView
 import com.example.qlabtest.databinding.AdapterFlightsListBinding

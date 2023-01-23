@@ -8,7 +8,7 @@ import androidx.recyclerview.widget.RecyclerView
 import com.example.qlabtest.R
 import com.example.qlabtest.data.models.FlightsModel
 import com.example.qlabtest.databinding.AdapterFlightsListBinding
-import com.example.qlabtest.presentation.adapters.viewholders.FlightsListViewHolder
+import com.example.qlabtest.presentation.adapters.view_holders.FlightsListViewHolder
 
 class FlightsListAdapter : RecyclerView.Adapter<FlightsListViewHolder>() {
 
