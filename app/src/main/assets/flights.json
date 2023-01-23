@@ -5,8 +5,8 @@
     "arrivalTo": "LHR",
     "departuresTime": "10:00",
     "arrivalTime": "11:00",
-    "departuresDate": "21/4/2023",
-    "arrivalDate": "21/4/2023",
+    "departuresDate": "21/04/2023",
+    "arrivalDate": "21/04/2023",
     "isDirect": "true"
   },
   {
@@ -15,8 +15,8 @@
     "arrivalTo": "LHR",
     "departuresTime": "13:14",
     "arrivalTime": "16:30",
-    "departuresDate": "24/3/2023",
-    "arrivalDate": "21/4/2023",
+    "departuresDate": "24/03/2023",
+    "arrivalDate": "21/04/2023",
     "isDirect": "true"
   },
   {
@@ -25,8 +25,8 @@
     "arrivalTo": "LHR",
     "departuresTime": "14:00",
     "arrivalTime": "15:00",
-    "departuresDate": "03/3/2023",
-    "arrivalDate": "03/4/2023",
+    "departuresDate": "03/03/2023",
+    "arrivalDate": "03/04/2023",
     "isDirect": "true"
   },
   {
@@ -35,8 +35,8 @@
     "arrivalTo": "TLV",
     "departuresTime": "21:00",
     "arrivalTime": "23:55",
-    "departuresDate": "17/3/2023",
-    "arrivalDate": "17/4/2023",
+    "departuresDate": "17/03/2023",
+    "arrivalDate": "17/04/2023",
     "isDirect": "true"
   },
   {
@@ -45,8 +45,8 @@
     "arrivalTo": "LHR",
     "departuresTime": "03:00",
     "arrivalTime": "05:55",
-    "departuresDate": "13/3/2023",
-    "arrivalDate": "13/4/2023",
+    "departuresDate": "13/03/2023",
+    "arrivalDate": "13/04/2023",
     "isDirect": "true"
   },
   {
@@ -55,8 +55,8 @@
     "arrivalTo": "LHR",
     "departuresTime": "08:00",
     "arrivalTime": "10:55",
-    "departuresDate": "05/5/2023",
-    "arrivalDate": "05/5/2023",
+    "departuresDate": "05/05/2023",
+    "arrivalDate": "05/05/2023",
     "isDirect": "true"
   },
   {
@@ -65,8 +65,8 @@
     "arrivalTo": "LHR",
     "departuresTime": "13:00",
     "arrivalTime": "15:55",
-    "departuresDate": "11/4/2023",
-    "arrivalDate": "11/4/2023",
+    "departuresDate": "11/04/2023",
+    "arrivalDate": "11/04/2023",
     "isDirect": "true"
   },
   {
@@ -75,8 +75,8 @@
     "arrivalTo": "LCA",
     "departuresTime": "15:00",
     "arrivalTime": "16:00",
-    "departuresDate": "24/5/2023",
-    "arrivalDate": "21/5/2023",
+    "departuresDate": "24/05/2023",
+    "arrivalDate": "21/05/2023",
     "isDirect": "true"
   },
   {
@@ -85,8 +85,8 @@
     "arrivalTo": "LHR",
     "departuresTime": "09:00",
     "arrivalTime": "11:55",
-    "departuresDate": "16/5/2023",
-    "arrivalDate": "16/5/2023",
+    "departuresDate": "16/05/2023",
+    "arrivalDate": "16/05/2023",
     "isDirect": "true"
   },
   {
@@ -95,8 +95,8 @@
     "arrivalTo": "LHR",
     "departuresTime": "21:00",
     "arrivalTime": "23:55",
-    "departuresDate": "24/7/2023",
-    "arrivalDate": "24/7/2023",
+    "departuresDate": "24/07/2023",
+    "arrivalDate": "24/07/2023",
     "isDirect": "true"
   },
   {
@@ -105,8 +105,8 @@
     "arrivalTo": "LCA",
     "departuresTime": "01:00",
     "arrivalTime": "02:00",
-    "departuresDate": "16/3/2023",
-    "arrivalDate": "16/532023",
+    "departuresDate": "16/03/2023",
+    "arrivalDate": "16/05/2023",
     "isDirect": "true"
   }
 ]

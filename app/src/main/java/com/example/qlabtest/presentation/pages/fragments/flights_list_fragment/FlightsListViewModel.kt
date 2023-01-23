@@ -1,18 +1,20 @@
 package com.example.qlabtest.presentation.pages.fragments.flights_list_fragment
 
+import android.annotation.SuppressLint
 import android.util.Log
 import androidx.lifecycle.ViewModel
 import com.example.qlabtest.core.MyApplication
 import com.example.qlabtest.data.models.FlightsModel
 import com.google.gson.Gson
 import com.google.gson.reflect.TypeToken
+import java.text.SimpleDateFormat
 import java.time.LocalDate
 
 class FlightsListViewModel : ViewModel() {
 
     var flightsModelSearchParams: FlightsModel? = null
     private var flightsModelList = arrayListOf<FlightsModel>()
-    var flightsModelListFiltered = arrayListOf<FlightsModel>()
+    val flightsModelListFiltered = arrayListOf<FlightsModel>()
 
     fun importFlightsJSON() {
         val jsonString: String =
@@ -28,41 +30,72 @@ class FlightsListViewModel : ViewModel() {
 
         for (flightModel in flightsModelList) {
 
-            val checkStartDateParsing = flightModel.departuresDate!!.replace("/", "-").split("-")
-            val checkStartDate =
-                LocalDate.parse("${checkStartDateParsing[2]}-${checkStartDateParsing[1]}-${checkStartDateParsing[0]}")
+            val checkStartDate = if (flightModel.departuresDate!!.isNotEmpty())
+                LocalDate.parse(changeDateFormat(flightModel.departuresDate!!)) else null
+            val checkEndDate = if (flightModel.arrivalDate!!.isNotEmpty())
+                LocalDate.parse(changeDateFormat(flightModel.arrivalDate!!)) else null
+            val startDate = if (flightsModelSearchParams?.departuresDate!!.isNotEmpty())
+                LocalDate.parse(changeDateFormat(flightsModelSearchParams?.departuresDate!!)) else null
+            val endDate = if (flightsModelSearchParams?.arrivalDate!!.isNotEmpty())
+                LocalDate.parse(changeDateFormat(flightsModelSearchParams?.arrivalDate!!)) else null
 
-            val checkEndDateParsing = flightModel.arrivalDate!!.replace("/", "-").split("-")
-            val checkEndDate =
-                LocalDate.parse("${checkEndDateParsing[2]}-${checkEndDateParsing[1]}-${checkEndDateParsing[0]}")
-
-            val startDateParsing =
-                flightsModelSearchParams?.departuresDate!!.replace("/", "-").split("-")
-            val startDate =
-                LocalDate.parse("${startDateParsing[2]}-${startDateParsing[1]}-${startDateParsing[0]}")
-
-            val endDateParsing =
-                flightsModelSearchParams?.arrivalDate!!.replace("/", "-").split("-")
-            val endDate =
-                LocalDate.parse("${endDateParsing[2]}-${endDateParsing[1]}-${endDateParsing[0]}")
-
-            if (flightModel.departuresFrom.equals(
-                    flightsModelSearchParams?.departuresFrom,
-                    ignoreCase = true
-                ) &&
-                flightModel.arrivalTo.equals(
-                    flightsModelSearchParams?.arrivalTo,
-                    ignoreCase = true
-                ) &&
-                (checkStartDate.isAfter(startDate) || checkStartDate.equals(startDate)) &&
-                (checkEndDate.isBefore(endDate) || checkEndDate.equals(endDate)) &&
-                flightModel.isDirect.equals(flightsModelSearchParams?.isDirect, ignoreCase = true)
+            if (departuresFromFilterCondition(flightModel) &&
+                arrivalToFilterCondition(flightModel) &&
+                startDateFilterCondition(checkStartDate!!, startDate) &&
+                endDateFilterCondition(checkEndDate!!, endDate) &&
+                isDirectFilterCondition(flightModel)
             ) {
                 flightsModelListFiltered.add(flightModel)
             }
         }
+    }
 
-        Log.i("check1", flightsModelListFiltered.toString())
+    private fun departuresFromFilterCondition(flightModel: FlightsModel): Boolean {
+        val departuresFromCheckParam = flightsModelSearchParams?.departuresFrom
+
+        return departuresFromCheckParam!!.isEmpty() ||
+                flightModel.departuresFrom.equals(departuresFromCheckParam, ignoreCase = true)
+    }
+
+    private fun arrivalToFilterCondition(flightModel: FlightsModel): Boolean {
+        val arrivalToCheckParam = flightsModelSearchParams?.arrivalTo
+
+        return arrivalToCheckParam!!.isEmpty() ||
+                flightModel.arrivalTo.equals(arrivalToCheckParam, ignoreCase = true)
+    }
+
+    private fun startDateFilterCondition(
+        checkStartDate: LocalDate,
+        startDate: LocalDate?
+    ): Boolean {
+
+        return flightsModelSearchParams?.departuresDate!!.isEmpty() ||
+                checkStartDate.isAfter(startDate) ||
+                checkStartDate == startDate
+    }
+
+    private fun endDateFilterCondition(
+        checkEndDate: LocalDate,
+        endDate: LocalDate?
+    ): Boolean {
+
+        return (flightsModelSearchParams?.arrivalDate!!.isEmpty() ||
+                checkEndDate.isBefore(endDate) ||
+                checkEndDate.equals(endDate))
+    }
+
+    private fun isDirectFilterCondition(flightModel: FlightsModel): Boolean {
+
+        return flightModel.isDirect.equals(flightsModelSearchParams?.isDirect, ignoreCase = true)
+    }
+
+    @SuppressLint("SimpleDateFormat")
+    private fun changeDateFormat(dateStr: String): String {
+        val inputFormat = SimpleDateFormat("dd/MM/yyyy")
+        val outputFormat = SimpleDateFormat("yyyy-MM-dd")
+        val inputDate = inputFormat.parse(dateStr) ?: ""
+
+        return outputFormat.format(inputDate)
     }
 
 }
