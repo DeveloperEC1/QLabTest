@@ -14,7 +14,6 @@
     <string name="arrival_time">Arrival Time:</string>
     <string name="departures_date">Departures Date:</string>
     <string name="arrival_date">Arrival Date:</string>
-    <string name="is_direct">Is Direct?</string>
     <string name="available_flights">Available Flights</string>
     <string name="loading_your_data">Loading your data…</string>
 </resources>
